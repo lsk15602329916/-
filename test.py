@@ -1,41 +1,46 @@
 import re
 from simhash import SimHash
+import os
+import cProfile
 
 if __name__ == '__main__':
 
+    # 获取当前目录绝对路径
+    dir_path = os.path.dirname(os.path.abspath(__file__))
+
     regular = r'[，。！、：“”]'
 
-    with open('./content/orig.txt', 'r', -1, 'utf-8') as f:
+    with open(dir_path + '\\content\\orig.txt', 'r', -1, 'utf-8') as f:
         s = f.read()
 
     hash1 = SimHash(re.split(regular, s.replace('\n', '')))
 
-    with open('./content/orig_0.8_add.txt', 'r', -1, 'utf-8') as f:
+    with open(dir_path + '\\content\\orig_0.8_add.txt', 'r', -1, 'utf-8') as f:
         s = f.read()
 
     hash2 = SimHash(re.split(regular, s.replace('\n', '')))
 
-    with open('./content/orig_0.8_del.txt', 'r', -1, 'utf-8') as f:
+    with open(dir_path + '\\content\\orig_0.8_del.txt', 'r', -1, 'utf-8') as f:
         s = f.read()
 
     hash3 = SimHash(re.split(regular, s.replace('\n', '')))
 
-    with open('./content/orig_0.8_dis_1.txt', 'r', -1, 'utf-8') as f:
+    with open(dir_path + '\\content\\orig_0.8_dis_1.txt', 'r', -1, 'utf-8') as f:
         s = f.read()
 
     hash4 = SimHash(re.split(regular, s.replace('\n', '')))
 
-    with open('./content/orig_0.8_dis_10.txt', 'r', -1, 'utf-8') as f:
+    with open(dir_path + '\\content\\orig_0.8_dis_10.txt', 'r', -1, 'utf-8') as f:
         s = f.read()
 
     hash5 = SimHash(re.split(regular, s.replace('\n', '')))
 
-    with open('./content/orig_0.8_dis_15.txt', 'r', -1, 'utf-8') as f:
+    with open(dir_path + '\\content\\orig_0.8_dis_15.txt', 'r', -1, 'utf-8') as f:
         s = f.read()
 
     hash6 = SimHash(re.split(regular, s.replace('\n', '')))
 
-    with open('./content/other.txt', 'r', -1, 'utf-8') as f:
+    with open(dir_path + '\\content\\other.txt', 'r', -1, 'utf-8') as f:
         s = f.read()
 
     hash7 = SimHash(re.split(regular, s.replace('\n', '')))
