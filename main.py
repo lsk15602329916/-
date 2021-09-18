@@ -1,17 +1,7 @@
 import re
 import os
 from simhash import SimHash
-
-
-def get_file_contents(path):
-    string = ''
-    f = open(path, 'r', encoding='UTF-8')
-    line = f.readline()
-    while line:
-        string = string + line
-        line = f.readline()
-    f.close()
-    return string
+from fileUtils import get_file_contents
 
 
 def main_test(p1, p2):
