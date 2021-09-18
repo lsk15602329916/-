@@ -45,9 +45,9 @@ if __name__ == '__main__':
 
     hash7 = SimHash(re.split(regular, s.replace('\n', '')))
 
-    print("orig.txt与orig_0.8_add.txt相似率为:\t\t", round(hash1.similarity(hash2), 2))
-    print("orig.txt与orig_0.8_del.txt相似率为:\t\t", round(hash1.similarity(hash3), 2))
-    print("orig.txt与orig_0.8_dis_1.txt相似率为:\t\t", round(hash1.similarity(hash4), 2))
-    print("orig.txt与orig_0.8_dis_10.txt相似率为:\t", round(hash1.similarity(hash5), 2))
-    print("orig.txt与orig_0.8_dis_15.txt相似率为:\t", round(hash1.similarity(hash6), 2))
-    print("orig.txt与other.txt非抄袭文章的相似率为:\t\t", round(hash1.similarity(hash7), 2))
+    print("orig.txt 与 orig_0.8_add.txt相似率为:\t\t", round(hash1.similarity(hash2), 2))
+    print("orig.txt 与 orig_0.8_del.txt相似率为:\t\t", round(hash1.similarity(hash3), 2))
+    print("orig.txt 与 orig_0.8_dis_1.txt相似率为:\t\t", round(hash1.similarity(hash4), 2))
+    print("orig.txt 与 orig_0.8_dis_10.txt相似率为:\t\t", round(hash1.similarity(hash5), 2))
+    print("orig.txt 与 orig_0.8_dis_15.txt相似率为:\t\t", round(hash1.similarity(hash6), 2))
+    print("orig.txt 与 other.txt非抄袭文章的相似率为:\t", round(hash1.similarity(hash7), 2))

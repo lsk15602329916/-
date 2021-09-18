@@ -1,22 +1,50 @@
 import re
-import sys
+import os
 from simhash import SimHash
+
+
+def get_file_contents(path):
+    string = ''
+    f = open(path, 'r', encoding='UTF-8')
+    line = f.readline()
+    while line:
+        string = string + line
+        line = f.readline()
+    f.close()
+    return string
+
 
 if __name__ == '__main__':
 
+    dir_path = os.path.dirname(os.path.abspath(__file__)) + '\\content\\'
+
+    path1 = input("输入论文原文的文件的相对路径：")
+    PATH1 = dir_path + path1
+    if not os.path.exists(PATH1) :
+        print("论文原文文件不存在！")
+        exit()
+
+    path2 = input("输入抄袭版论文的文件的相对路径：")
+    PATH2 = dir_path + path2
+    if not os.path.exists(PATH2):
+        print("抄袭版论文文件不存在！")
+        exit()
+
+    str1 = get_file_contents(PATH1)
+    str2 = get_file_contents(PATH2)
+
+    save_path = dir_path + "\\result.txt"
     try:
-        with open(sys.argv[1], 'r', -1, 'utf-8') as f:  # 读取原文件
-            s1 = f.read()
-        with open(sys.argv[2], 'r', -1, 'utf-8') as f:  # 读取抄袭文件
-            s2 = f.read()
 
-        hash1 = SimHash(re.split(r'[，。！、：“”]', s1.replace('\n', '')))  # 分段后计算每段的哈希值与数字指纹
-        hash2 = SimHash(re.split(r'[，。！、：“”]', s2.replace('\n', '')))
+        hash1 = SimHash(re.split(r'[，。！、：“”]', str1.replace('\n', '')))  # 分段后计算每段的哈希值与数字指纹
+        hash2 = SimHash(re.split(r'[，。！、：“”]', str2.replace('\n', '')))
+        result = hash1.similarity(hash2)
 
-        with open(sys.argv[3], 'a', -1, 'utf-8') as f:
-            f.write(sys.argv[1].split('/')[-1] + '与' + sys.argv[2].split('/')[-1])
-            f.write('的相似度为：' + str(hash1.similarity(hash2)) + '\n')  # 通过数字指纹算出相似值
-            print('的相似度为：' + str(hash1.similarity(hash2)) + '\n')
+        with open(save_path, 'a', -1, 'utf-8') as f:
+            f.write(path1 + ' 与 ' + path2)
+            f.write(' 的相似度为：' + str(round(result, 2)) + '\n')  # 通过数字指纹算出相似值
+            print(path1 + ' 与 ' + path2 +' 的相似度为：' + str(round(result, 2)) + '\n')
+            
     except IOError:
         print('错误: 没有找到文件或读取文件失败!')
     except IndexError:

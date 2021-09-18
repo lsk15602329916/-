@@ -1,0 +1,7 @@
+orig_0.8_add.txt与orig.txt的相似度为：0.8452380952380952
+orig.txt 与 orig_0.8_add.txt 的相似度为：0.8452380952380952
+orig.txt 与 orig_0.8_add.txt 的相似度为：1.0
+orig_0.8_add.txt 与 orig.txt 的相似度为：1.0
+orig.txt 与 orig_0.8_del.txt 的相似度为：1.0
+orig.txt 与 orig_0.8_add.txt 的相似度为：0.8452380952380952
+orig_0.8_add.txt 与 orig.txtorig.txt 与 orig_0.8_add.txt 的相似度为：0.85
