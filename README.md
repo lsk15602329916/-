@@ -4,7 +4,7 @@
 |  这个作业要求在哪里    | [作业要求](https://edu.cnblogs.com/campus/gdgy/networkengineering1934-Softwareengineering/homework/12137)     |
 |  这个作业的目标   |  学会熟练运用PSP表格进行估计，掌握单元测试的功能  | 
 
-### 1.相关代码已经上传到[GitHub](https://github.com/lsk15602329916/plagiarism-checker)
+### 1.相关代码已经上传到[GitHub](https://github.com/lsk15602329916/3119005382/tree/master)
 
 ### 2.PSP 表格
 
@@ -93,4 +93,4 @@ Reporting | 报告 | 60 | 70 |
 ![](https://img2020.cnblogs.com/blog/2531464/202109/2531464-20210919045439907-1323147654.png)
 
 
-##### 以上即为本次个人作业全部内容！
+### 谢谢观看！
