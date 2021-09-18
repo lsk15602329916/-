@@ -6,9 +6,9 @@ class SimHash:
         self.hash_bits = hash_bits  # 数字指纹位数
         self.hash = self.sim_hash(tokens)
 
-    # toString函数
-    def __str__(self):
-        return str(self.hash)
+    # # toString函数
+    # def __str__(self):
+    #     return str(self.hash)
 
     # 生成simHash值与strHash值
     def sim_hash(self, tokens):

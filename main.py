@@ -14,38 +14,36 @@ def get_file_contents(path):
     return string
 
 
-if __name__ == '__main__':
-
+def main_test(p1, p2):
     dir_path = os.path.dirname(os.path.abspath(__file__)) + '\\content\\'
 
-    path1 = input("输入论文原文的文件的相对路径：")
-    PATH1 = dir_path + path1
-    if not os.path.exists(PATH1) :
+    PATH1 = dir_path + p1
+    if not os.path.exists(PATH1):
         print("论文原文文件不存在！")
         exit()
 
-    path2 = input("输入抄袭版论文的文件的相对路径：")
-    PATH2 = dir_path + path2
+    PATH2 = dir_path + p2
     if not os.path.exists(PATH2):
         print("抄袭版论文文件不存在！")
         exit()
-
     str1 = get_file_contents(PATH1)
     str2 = get_file_contents(PATH2)
 
     save_path = dir_path + "\\result.txt"
-    try:
+    hash1 = SimHash(re.split(r'[，。！、：“”]', str1.replace('\n', '')))  # 分段后计算每段的哈希值与数字指纹
+    hash2 = SimHash(re.split(r'[，。！、：“”]', str2.replace('\n', '')))
+    result = round(hash1.similarity(hash2), 2)
 
-        hash1 = SimHash(re.split(r'[，。！、：“”]', str1.replace('\n', '')))  # 分段后计算每段的哈希值与数字指纹
-        hash2 = SimHash(re.split(r'[，。！、：“”]', str2.replace('\n', '')))
-        result = hash1.similarity(hash2)
+    with open(save_path, 'a', -1, 'utf-8') as f:
+        f.write(p1 + ' 与 ' + p2)
+        f.write(' 的相似度为：' + str(result) + '\n')  # 通过数字指纹算出相似值
+        print(p1 + ' 与 ' + p2 + ' 的相似度为：' + str(result) + '\n')
+        f.close()
 
-        with open(save_path, 'a', -1, 'utf-8') as f:
-            f.write(path1 + ' 与 ' + path2)
-            f.write(' 的相似度为：' + str(round(result, 2)) + '\n')  # 通过数字指纹算出相似值
-            print(path1 + ' 与 ' + path2 +' 的相似度为：' + str(round(result, 2)) + '\n')
-            
-    except IOError:
-        print('错误: 没有找到文件或读取文件失败!')
-    except IndexError:
-        print('错误: 参数缺失, 需要依次输入两个读入文件以及一个输出结果的文件!')
+    return result
+
+
+if __name__ == '__main__':
+    path1 = input("输入论文原文的文件的相对路径：")
+    path2 = input("输入抄袭版论文的文件的相对路径：")
+    main_test(path1, path2)
